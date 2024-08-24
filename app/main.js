@@ -5,6 +5,9 @@ function matchPattern(inputLine, pattern) {
     return /\d/.test(inputLine)
   } else if (pattern === "\\w") {
     return /\w/.test(inputLine);
+  } else if (pattern.startsWith("[") && pattern.endsWith("]")) {
+    const ptrn = new RegExp(pattern);
+    return ptrn.test(inputLine);
   } else {
     throw new Error(`Unhandled pattern ${pattern}`);
   }
